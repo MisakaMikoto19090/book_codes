@@ -1,0 +1,36 @@
+﻿<!DOCTYPE html>
+<html>
+<head>
+	<meta name="author" content="Yeeku.H.Lee(CrazyIt.org)" />
+	<meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+	<title> 浣跨敤WebSocket阃氢俊 </title>
+	<script type="text/javascript">
+		// 鍒涘缓Web Socket瀵硅薄
+		var webSocket = new WebSocket("ws://127.0.0.1:30000");
+		webSocket.onopen = function()
+		{
+			// 涓簅nmessage浜嬩欢缁戝畾鐩戝惉鍣紝鎺ユ敹娑堟伅
+			webSocket.onmessage= function(event)
+			{
+				// 鎺ユ敹銆佸苟鏄剧ず娑堟伅
+				document.getElementById('show').innerHTML 
+					+= event.data + "<br/>";
+			}
+		};
+		var sendMsg = function(val)
+		{
+			var inputElement = document.getElementById('msg');
+			// 鍙戦€佹秷鎭?
+			webSocket.send(inputElement.value);
+			// 娓呯┖鍗曡鏂囨湰妗?
+			inputElement.value = "";
+		}
+	</script>
+</head>
+<body>
+<div style="width:600px;height:240px;
+	overflow-y:auto;border:1px solid #333;" id="show"></div>
+<input type="text" size="80" id="msg" name="msg"/>
+<input type="button" value="鍙戦€? onclick="sendMsg();"/>
+</body>
+</html>

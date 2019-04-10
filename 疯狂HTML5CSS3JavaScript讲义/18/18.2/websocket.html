@@ -1,0 +1,27 @@
+﻿<!DOCTYPE html>
+<html>
+<head>
+	<meta name="author" content="Yeeku.H.Lee(CrazyIt.org)" />
+	<meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+	<title> 浣跨敤WebSocket阃氢俊 </title>
+</head>
+<body>
+<script type="text/javascript">
+	// 鍒涘缓Web Socket瀵硅薄
+	var webSocket = new WebSocket("ws://127.0.0.1:30000");
+	// 褰揥ebSocket寤虹珛缃戠粶杩炴帴镞舵縺鍙戣鍑芥暟
+	webSocket.onopen= function()
+	{
+		alert("宸叉墦寮€杩炴帴");
+		// 鍙戦€佹秷鎭?
+		webSocket.send("鎴戞槸鐤妫杞欢鏁栾偛涓绩");
+	}
+	// 涓簅nmessage浜嬩欢缁戝畾鐩戝惉鍣紝鎺ユ敹娑堟伅
+	webSocket.onmessage= function(event)
+	{
+		// 鎺ユ敹娑堟伅
+		alert("鏀跺埌镄勬秷鎭槸锛? + event.data);
+	}
+</script>
+</body>
+</html>
